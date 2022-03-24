@@ -1,0 +1,25 @@
+//This button is on the mobile view
+.btn-signup {
+  outline: none;
+  text-transform: capitalize;
+  font-size: 1.3rem;
+  padding: 15px 23px;
+  margin: 0;
+  margin-top: 59px;
+}
+
+.modal-btn {
+  background: $colour-primary;
+  display: block;
+  margin: 0 auto;
+  border-radius: 10px;
+  font-size: 1.3rem;
+  padding: 12px 82px;
+  color: $colour-white;
+  cursor: pointer;
+  border: 0;
+
+  &:hover {
+    background: $colour-secondary;
+  }
+}

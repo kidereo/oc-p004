@@ -1,0 +1,20 @@
+footer {
+  padding-left: 2vw;
+  padding-right: 2vw;
+  margin: 0 20px;
+}
+
+.copyrights {
+  color: $colour-primary;
+  padding: 0;
+  font-size: 1rem;
+  margin: 60px 0 30px;
+  font-weight: bolder;
+}
+
+@media only screen and (max-width: $breakpoint-tablet-max) {
+  .copyrights {
+    margin-top: 50px;
+    text-align: center;
+  }
+}

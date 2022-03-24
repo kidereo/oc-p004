@@ -1,0 +1,13 @@
+//Import normalize.css directly from GitHub
+//noinspection CssUnknownTarget
+@import "normalize";
+
+//Import local sass files
+@import "01_utils/variables";
+@import "03_base/root";
+@import "03_base/core";
+@import "03_base/typography";
+@import "04_components/buttons";
+@import "05_layout/topnav";
+@import "05_layout/hero";
+@import "05_layout/footer";
