@@ -21,7 +21,7 @@ From the assessment description and GitHub:
 6. Il n'y a aucune dépendance ;
 7. Vous ne devez utiliser que du CSS personnalisé et du JavaScript pur, sans jQuery, Bootstrap ou autre librairie.
  
- ##TODO:
+## TODO:
 1. Tests manuels
 2. Ajouter confirmation quand envoi réussi
 3. Ajouter validation ou messages d'erreur
