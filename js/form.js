@@ -14,10 +14,11 @@ const regexEmail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 const validateFirstName = () => {
     if ((firstName.value).length < firstName.minLength || !firstName.value.match(regexName)) {
         firstName.parentElement.setAttribute('data-error-visible', 'true');
+        firstName.classList.remove('border-green');
         firstName.classList.add('border-red');
         return false;
     }
-
+    firstName.classList.remove('border-red');
     firstName.classList.add('border-green');
     return true;
 };
@@ -29,10 +30,11 @@ const validateFirstName = () => {
 const validateLastName = () => {
     if ((lastName.value).length < lastName.minLength || !lastName.value.match(regexName)) {
         lastName.parentElement.setAttribute('data-error-visible', 'true');
+        lastName.classList.remove('border-green');
         lastName.classList.add('border-red');
         return false;
     }
-
+    lastName.classList.remove('border-red');
     lastName.classList.add('border-green');
     return true;
 };
@@ -44,10 +46,11 @@ const validateLastName = () => {
 const validateEmail = () => {
     if (!eMail.value.match(regexEmail)) {
         eMail.parentElement.setAttribute('data-error-visible', 'true');
+        eMail.classList.remove('border-green');
         eMail.classList.add('border-red');
         return false;
     }
-
+    eMail.classList.remove('border-red');
     eMail.classList.add('border-green');
     return true;
 };
