@@ -80,6 +80,7 @@
             <!-- Registration form -->
             <div class="modal-body">
                 <form
+                        id="form"
                         name="reserve"
                         action="index.html"
                         method="get"
@@ -87,7 +88,10 @@
                 >
 
                     <!-- First name field -->
-                    <div class="formData">
+                    <div class="formData"
+                         data-error="Please make sure that your name is at least 2 characters long and has no numbers in it!"
+                         data-error-visible=false>
+
                         <label>Prénom</label><br>
                         <input
                                 class="text-control"
@@ -99,18 +103,24 @@
                     </div>
 
                     <!-- Last name field -->
-                    <div class="formData">
+                    <div class="formData"
+                         data-error="Please make sure that your surname is at least 2 characters long and has no numbers in it!"
+                         data-error-visible=false>
+
                         <label>Nom</label><br>
                         <input
                                 class="text-control"
                                 type="text"
                                 id="last"
                                 name="last"
+                                minlength="2"
                         /><br>
                     </div>
 
                     <!-- Email field -->
-                    <div class="formData">
+                    <div class="formData"
+                         data-error="Please enter a valid e-mail address!"
+                         data-error-visible=false>
                         <label>E-mail</label><br>
                         <input
                                 class="text-control"
@@ -262,6 +272,7 @@
 
 <script src="js/edit-nav.js"></script>
 <script src="js/modal.js"></script>
+<script src="js/form.js"></script>
 
 </body>
 

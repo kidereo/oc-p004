@@ -33,7 +33,8 @@
   width: 100%;
   max-width: 500px;
   animation-name: modalopen;
-  animation-duration: var(--modal-duration);
+  //animation-duration: var(--modal-duration);
+  animation-duration: $modal-duration;
   background: #232323;
   border-radius: 10px;
   overflow: hidden;
@@ -70,6 +71,18 @@ input {
   height: 48px;
 }
 
+.border-green {
+  border: 2px solid green;
+}
+
+.border-red {
+  border: 2px solid #e54858;
+}
+
+.border-none {
+  border: 2px solid transparent;
+}
+
 .formData[data-error]::after {
   content: attr(data-error);
   font-size: 0.4em;
@@ -87,9 +100,9 @@ input {
   opacity: 1;
 }
 
-.formData[data-error-visible="true"] .text-control {
+/*.formData[data-error-visible="true"] .text-control {
   border: 2px solid #e54858;
-}
+}*/
 
 /*
 input[data-error]::after {

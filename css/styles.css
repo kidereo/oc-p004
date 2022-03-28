@@ -107,7 +107,11 @@ template { display: none; }
 /** Add the correct display in IE 10. */
 [hidden] { display: none; }
 
-:root { --font-default: "DM Sans", Arial, Helvetica, sans-serif; --font-slab: var(--font-default); --modal-duration: 0.8s; }
+@keyframes modalopen { from { opacity: 0;
+    transform: translateY(-150px); }
+  to { opacity: 1; } }
+
+:root { --font-default: "DM Sans", Arial, Helvetica, sans-serif; --font-slab: var(--font-default); }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -193,7 +197,7 @@ footer { padding-left: 2vw; padding-right: 2vw; margin: 0 20px; }
 
 .bground { display: none; position: fixed; z-index: 1; left: 0; top: 0; height: 100%; width: 100%; overflow: auto; background-color: rgba(26, 39, 156, 0.4); }
 
-.content { margin: 5% auto; width: 100%; max-width: 500px; animation-name: modalopen; animation-duration: var(--modal-duration); background: #232323; border-radius: 10px; overflow: hidden; position: relative; color: #fff; padding-top: 10px; }
+.content { margin: 5% auto; width: 100%; max-width: 500px; animation-name: modalopen; animation-duration: 1s; background: #232323; border-radius: 10px; overflow: hidden; position: relative; color: #fff; padding-top: 10px; }
 
 .modal-body { padding: 15px 8%; margin: 15px auto; }
 
@@ -203,12 +207,17 @@ input { padding: 8px; border: 0.8px solid #ccc; outline: none; }
 
 .text-control { margin: 0; padding: 8px; width: 100%; border-radius: 8px; font-size: 20px; height: 48px; }
 
+.border-green { border: 2px solid green; }
+
+.border-red { border: 2px solid #e54858; }
+
+.border-none { border: 2px solid transparent; }
+
 .formData[data-error]::after { content: attr(data-error); font-size: 0.4em; color: #e54858; display: block; margin-top: 7px; margin-bottom: 7px; text-align: right; line-height: 0.3; opacity: 0; transition: 0.3s; }
 
 .formData[data-error-visible="true"]::after { opacity: 1; }
 
-.formData[data-error-visible="true"] .text-control { border: 2px solid #e54858; }
-
+/*.formData[data-error-visible="true"] .text-control { border: 2px solid #e54858; }*/
 /* input[data-error]::after { content: attr(data-error); font-size: 0.4em; color: red; } */
 .checkbox-label, .checkbox2-label { position: relative; margin-left: 36px; font-size: 12px; font-weight: normal; }
 
