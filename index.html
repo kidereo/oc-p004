@@ -145,14 +145,17 @@
                     </div>
 
                     <!-- Participation # field -->
-                    <div class="formData">
+                    <div class="formData"
+                         data-error="Do not forget to mention previous participation - 99 maximum!"
+                         data-error-visible=false>
                         <br>
                         <label>À combien de tournois GameOn avez-vous déjà participé ?</label><br>
                         <input type="number" class="text-control" id="quantity" name="quantity" min="0" max="99"/>
-                        <br><br>
+                        <br>
                     </div>
 
                     <!-- City radio buttons -->
+                    <br>
                     <p class="text-label">A quel tournoi souhaitez-vous participer cette année ?</p>
                     <div class="formData">
                         <input

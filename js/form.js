@@ -5,6 +5,7 @@ const firstName = document.getElementById('first');
 const lastName = document.getElementById('last');
 const eMail = document.getElementById('email');
 const bDay = document.getElementById('birthdate');
+const qty = document.getElementById('quantity');
 const regexName = /^[a-z ,.'-]+$/i;
 const regexEmail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 
@@ -55,7 +56,7 @@ function validateEmail() {
  * @returns {boolean}
  */
 function validateBirthdate() {
-    if (calculateAge() < bDay.min || !bDay.value) {
+    if (calculateAge() < parseInt(bDay.min) || !bDay.value) {
         setDataErrorVisible(bDay);
         setBorderToError(bDay);
         return false;
@@ -65,7 +66,21 @@ function validateBirthdate() {
 }
 
 /**
- * Validate fields on the fly
+ * Check if the number of tournaments makes sense
+ * @returns {boolean}
+ */
+function validateQuantity() {
+    if (qty.value < parseInt(qty.min) || qty.value > parseInt(qty.max) || !qty.value) {
+        setDataErrorVisible(qty);
+        setBorderToError(qty);
+        return false;
+    }
+    setBorderToValid(qty);
+    return true;
+}
+
+/**
+ * Validate fields on the focusout
  */
 firstName.addEventListener('focusout', () => {
     validateFirstName();
@@ -95,6 +110,13 @@ bDay.addEventListener('focusout', () => {
     }
 });
 
+qty.addEventListener('focusout', () => {
+    validateQuantity();
+    if (validateQuantity()) {
+        setDataErrorHidden(qty);
+    }
+});
+
 /**
  * Helper functions to save typing
  * @param element
@@ -119,11 +141,12 @@ function setBorderToValid(element) {
 
 /**
  * Function to calculate age.
+ * Calculates a year of 365.25 days (0.25 because of leap years) in ms.
  * @returns {number}
  */
 function calculateAge() {
     const birthDay = new Date(bDay.value);
-    const yearInMs = 3.15576e+10;
+    const yearInMs = 365.25 * 24 * 60 * 60 * 1000;
     return Math.floor((Date.now() - birthDay) / yearInMs);
 }
 
@@ -136,7 +159,12 @@ function validate() {
     validateLastName();
     validateEmail();
     validateBirthdate();
-    if (validateFirstName() && validateLastName() && validateEmail() && validateBirthdate()) {
+    validateQuantity()
+    if (validateFirstName() &&
+        validateLastName() &&
+        validateEmail() &&
+        validateBirthdate() &&
+        validateQuantity()) {
         return true;
     }
     return false;
