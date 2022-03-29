@@ -6,8 +6,13 @@ const lastName = document.getElementById('last');
 const eMail = document.getElementById('email');
 const bDay = document.getElementById('birthdate');
 const qty = document.getElementById('quantity');
+
+/**
+ * Variables
+ */
 const regexName = /^[a-z ,.'-]+$/i;
 const regexEmail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+const minimumAge = 16;
 
 /**
  * Check if the first name is kosher
@@ -56,7 +61,7 @@ function validateEmail() {
  * @returns {boolean}
  */
 function validateBirthdate() {
-    if (calculateAge() < parseInt(bDay.min) || !bDay.value) {
+    if (calculateAge() < minimumAge || !bDay.value) {
         setDataErrorVisible(bDay);
         setBorderToError(bDay);
         return false;
@@ -76,6 +81,15 @@ function validateQuantity() {
         return false;
     }
     setBorderToValid(qty);
+    return true;
+}
+
+/**
+ * Check if a city is selected
+ * @returns {boolean}
+ */
+function validateLocation(){
+
     return true;
 }
 
@@ -159,7 +173,7 @@ function validate() {
     validateLastName();
     validateEmail();
     validateBirthdate();
-    validateQuantity()
+    validateQuantity();
     if (validateFirstName() &&
         validateLastName() &&
         validateEmail() &&
