@@ -71,22 +71,18 @@ input {
   height: 48px;
 }
 
-.border-green {
-  border: 2px solid green;
+.border-valid {
+  border: 2px solid $colour-tertiary;
 }
 
-.border-red {
-  border: 2px solid #e54858;
-}
-
-.border-none {
-  border: 2px solid transparent;
+.border-error {
+  border: 2px solid $colour-error;
 }
 
 .formData[data-error]::after {
   content: attr(data-error);
   font-size: 0.4em;
-  color: #e54858;
+  color: $colour-error;
   display: block;
   margin-top: 7px;
   margin-bottom: 7px;

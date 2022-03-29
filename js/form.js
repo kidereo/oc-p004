@@ -11,49 +11,49 @@ const regexEmail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
  * Check if the first name is kosher
  * @returns {boolean}
  */
-const validateFirstName = () => {
+function validateFirstName() {
     if ((firstName.value).length < firstName.minLength || !firstName.value.match(regexName)) {
         firstName.parentElement.setAttribute('data-error-visible', 'true');
-        firstName.classList.remove('border-green');
-        firstName.classList.add('border-red');
+        firstName.classList.remove('border-valid');
+        firstName.classList.add('border-error');
         return false;
     }
-    firstName.classList.remove('border-red');
-    firstName.classList.add('border-green');
+    firstName.classList.remove('border-error');
+    firstName.classList.add('border-valid');
     return true;
-};
+}
 
 /**
  * Check if the last name is kosher
  * @returns {boolean}
  */
-const validateLastName = () => {
+function validateLastName() {
     if ((lastName.value).length < lastName.minLength || !lastName.value.match(regexName)) {
         lastName.parentElement.setAttribute('data-error-visible', 'true');
-        lastName.classList.remove('border-green');
-        lastName.classList.add('border-red');
+        lastName.classList.remove('border-valid');
+        lastName.classList.add('border-error');
         return false;
     }
-    lastName.classList.remove('border-red');
-    lastName.classList.add('border-green');
+    lastName.classList.remove('border-error');
+    lastName.classList.add('border-valid');
     return true;
-};
+}
 
 /**
  * Check if the email is kosher
  * @returns {boolean}
  */
-const validateEmail = () => {
+function validateEmail() {
     if (!eMail.value.match(regexEmail)) {
         eMail.parentElement.setAttribute('data-error-visible', 'true');
-        eMail.classList.remove('border-green');
-        eMail.classList.add('border-red');
+        eMail.classList.remove('border-valid');
+        eMail.classList.add('border-error');
         return false;
     }
-    eMail.classList.remove('border-red');
-    eMail.classList.add('border-green');
+    eMail.classList.remove('border-error');
+    eMail.classList.add('border-valid');
     return true;
-};
+}
 
 /**
  * Validate fields on the fly
@@ -83,7 +83,7 @@ eMail.addEventListener('focusout', () => {
  * Function to  validate and allow dispatch of the form on submission
  * @returns {boolean}
  */
-const validate = () => {
+function validate() {
     validateFirstName();
     validateLastName();
     validateEmail();
@@ -91,4 +91,4 @@ const validate = () => {
         return true;
     }
     return false;
-};
+}

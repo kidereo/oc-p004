@@ -40,8 +40,8 @@ function closeModal() {
     document.forms[0].reset();
     //Reset borders and error messages
     const elements = document.getElementsByClassName('text-control');
-    for (var i = 0; i < elements.length; i++) {
-        elements[i].classList.remove('border-green', 'border-red');
+    for (let i = 0; i < elements.length; i++) {
+        elements[i].classList.remove('border-valid', 'border-error');
         elements[i].parentElement.setAttribute('data-error-visible', 'false');
     }
 
