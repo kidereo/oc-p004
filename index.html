@@ -131,18 +131,22 @@
                     </div>
 
                     <!-- B-day field -->
-                    <div class="formData">
+                    <div class="formData"
+                         data-error="Remember, you must be at least 16 to participate!"
+                         data-error-visible=false>
                         <label>Date de naissance</label><br>
                         <input
                                 class="text-control"
                                 type="date"
                                 id="birthdate"
                                 name="birthdate"
-                        /><br><br>
+                                min="16"
+                        /><br>
                     </div>
 
                     <!-- Participation # field -->
                     <div class="formData">
+                        <br>
                         <label>À combien de tournois GameOn avez-vous déjà participé ?</label><br>
                         <input type="number" class="text-control" id="quantity" name="quantity" min="0" max="99"/>
                         <br><br>

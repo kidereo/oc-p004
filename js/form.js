@@ -4,6 +4,7 @@
 const firstName = document.getElementById('first');
 const lastName = document.getElementById('last');
 const eMail = document.getElementById('email');
+const bDay = document.getElementById('birthdate');
 const regexName = /^[a-z ,.'-]+$/i;
 const regexEmail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 
@@ -13,13 +14,11 @@ const regexEmail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
  */
 function validateFirstName() {
     if ((firstName.value).length < firstName.minLength || !firstName.value.match(regexName)) {
-        firstName.parentElement.setAttribute('data-error-visible', 'true');
-        firstName.classList.remove('border-valid');
-        firstName.classList.add('border-error');
+        setDataErrorVisible(firstName);
+        setBorderToError(firstName);
         return false;
     }
-    firstName.classList.remove('border-error');
-    firstName.classList.add('border-valid');
+    setBorderToValid(firstName);
     return true;
 }
 
@@ -29,13 +28,11 @@ function validateFirstName() {
  */
 function validateLastName() {
     if ((lastName.value).length < lastName.minLength || !lastName.value.match(regexName)) {
-        lastName.parentElement.setAttribute('data-error-visible', 'true');
-        lastName.classList.remove('border-valid');
-        lastName.classList.add('border-error');
+        setDataErrorVisible(lastName);
+        setBorderToError(lastName);
         return false;
     }
-    lastName.classList.remove('border-error');
-    lastName.classList.add('border-valid');
+    setBorderToValid(lastName);
     return true;
 }
 
@@ -45,13 +42,25 @@ function validateLastName() {
  */
 function validateEmail() {
     if (!eMail.value.match(regexEmail)) {
-        eMail.parentElement.setAttribute('data-error-visible', 'true');
-        eMail.classList.remove('border-valid');
-        eMail.classList.add('border-error');
+        setDataErrorVisible(eMail);
+        setBorderToError(eMail);
         return false;
     }
-    eMail.classList.remove('border-error');
-    eMail.classList.add('border-valid');
+    setBorderToValid(eMail);
+    return true;
+}
+
+/**
+ * Check if the age is kosher
+ * @returns {boolean}
+ */
+function validateBirthdate() {
+    if (calculateAge() < bDay.min || !bDay.value) {
+        setDataErrorVisible(bDay);
+        setBorderToError(bDay);
+        return false;
+    }
+    setBorderToValid(bDay);
     return true;
 }
 
@@ -61,23 +70,62 @@ function validateEmail() {
 firstName.addEventListener('focusout', () => {
     validateFirstName();
     if (validateFirstName()) {
-        firstName.parentElement.setAttribute('data-error-visible', 'false');
+        setDataErrorHidden(firstName);
     }
 });
 
 lastName.addEventListener('focusout', () => {
     validateLastName();
     if (validateLastName()) {
-        lastName.parentElement.setAttribute('data-error-visible', 'false');
+        setDataErrorHidden(lastName);
     }
 });
 
 eMail.addEventListener('focusout', () => {
     validateEmail();
     if (validateEmail()) {
-        eMail.parentElement.setAttribute('data-error-visible', 'false');
+        setDataErrorHidden(eMail);
     }
 });
+
+bDay.addEventListener('focusout', () => {
+    validateBirthdate();
+    if (validateBirthdate()) {
+        setDataErrorHidden(bDay);
+    }
+});
+
+/**
+ * Helper functions to save typing
+ * @param element
+ */
+function setDataErrorVisible(element) {
+    element.parentElement.setAttribute('data-error-visible', 'true');
+}
+
+function setDataErrorHidden(element) {
+    element.parentElement.setAttribute('data-error-visible', 'false');
+}
+
+function setBorderToError(element) {
+    element.classList.remove('border-valid');
+    element.classList.add('border-error');
+}
+
+function setBorderToValid(element) {
+    element.classList.remove('border-error');
+    element.classList.add('border-valid');
+}
+
+/**
+ * Function to calculate age.
+ * @returns {number}
+ */
+function calculateAge() {
+    const birthDay = new Date(bDay.value);
+    const yearInMs = 3.15576e+10;
+    return Math.floor((Date.now() - birthDay) / yearInMs);
+}
 
 /**
  * Function to  validate and allow dispatch of the form on submission
@@ -87,7 +135,8 @@ function validate() {
     validateFirstName();
     validateLastName();
     validateEmail();
-    if (validateFirstName() && validateLastName() && validateEmail()) {
+    validateBirthdate();
+    if (validateFirstName() && validateLastName() && validateEmail() && validateBirthdate()) {
         return true;
     }
     return false;
