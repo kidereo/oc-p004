@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="utf-8"/>
     <title>GameOn | Reservation</title>
@@ -156,7 +156,10 @@
                     <!-- City radio buttons -->
                     <br>
                     <p class="text-label">A quel tournoi souhaitez-vous participer cette année ?</p>
-                    <div class="formData">
+                    <div class="formData"
+                         data-error="Please select a city!"
+                         data-error-visible=false
+                         id="form-locations">
                         <input
                                 class="checkbox-input"
                                 type="radio"
@@ -228,11 +231,11 @@
                             <span class="checkbox-icon"></span>
                             Portland
                         </label>
-                        <br><br>
                     </div>
 
                     <!-- T&C acceptance and mailings checkboxes -->
                     <div class="formData">
+                        <br>
                         <input
                                 class="checkbox-input"
                                 type="checkbox"
@@ -241,7 +244,7 @@
                                 required
                         />
 
-                        <label class="checkbox2-label" for="checkbox1" >
+                        <label class="checkbox2-label" for="checkbox1">
                             <span class="checkbox-icon"></span>
                             J'ai lu et accepté les conditions d'utilisation.
                         </label>

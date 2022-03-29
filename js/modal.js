@@ -44,7 +44,9 @@ function closeModal() {
         elements[i].classList.remove('border-valid', 'border-error');
         elements[i].parentElement.setAttribute('data-error-visible', 'false');
     }
-
+    //Reset error message on radio buttons
+    document.getElementById('form-locations').setAttribute('data-error-visible', 'false');
+    //Hide the modal
     modalBackground.style.display = "none";
 }
 

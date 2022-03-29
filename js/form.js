@@ -6,6 +6,8 @@ const lastName = document.getElementById('last');
 const eMail = document.getElementById('email');
 const bDay = document.getElementById('birthdate');
 const qty = document.getElementById('quantity');
+const formLocations = document.getElementById('form-locations');
+const individualLocations = document.querySelectorAll('#form-locations .checkbox-input');
 
 /**
  * Variables
@@ -85,12 +87,17 @@ function validateQuantity() {
 }
 
 /**
- * Check if a city is selected
+ * Check if any city is selected
  * @returns {boolean}
  */
-function validateLocation(){
-
-    return true;
+function validateLocation() {
+    for (let i = 0; i < individualLocations.length; i++) {
+        if (individualLocations[i].checked) {
+            return true;
+        }
+    }
+    formLocations.setAttribute('data-error-visible', 'true');
+    return false;
 }
 
 /**
@@ -128,6 +135,13 @@ qty.addEventListener('focusout', () => {
     validateQuantity();
     if (validateQuantity()) {
         setDataErrorHidden(qty);
+    }
+});
+
+formLocations.addEventListener('change', () => {
+    validateLocation();
+    if (validateLocation()) {
+        formLocations.setAttribute('data-error-visible', 'false');
     }
 });
 
@@ -174,11 +188,14 @@ function validate() {
     validateEmail();
     validateBirthdate();
     validateQuantity();
+    validateLocation();
     if (validateFirstName() &&
         validateLastName() &&
         validateEmail() &&
         validateBirthdate() &&
-        validateQuantity()) {
+        validateQuantity() &&
+        validateLocation()
+    ) {
         return true;
     }
     return false;
