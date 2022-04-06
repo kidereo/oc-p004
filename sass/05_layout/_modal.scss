@@ -79,6 +79,14 @@ input {
   border: 2px solid $colour-error;
 }
 
+.outline-valid {
+  outline: 2px solid $colour-tertiary;
+}
+
+.outline-error {
+  outline: 2px solid $colour-error;
+}
+
 .formData[data-error]::after {
   content: attr(data-error);
   font-size: 0.4em;

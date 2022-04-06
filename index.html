@@ -234,18 +234,18 @@
                     </div>
 
                     <!-- T&C acceptance and mailings checkboxes -->
-                    <div class="formData">
+                    <div class="formData"
+                         data-error="You must accept T&C to register!"
+                         data-error-visible=false>
                         <br>
                         <input
                                 class="checkbox-input"
                                 type="checkbox"
                                 id="checkbox1"
-                                checked
-                                required
                         />
 
                         <label class="checkbox2-label" for="checkbox1">
-                            <span class="checkbox-icon"></span>
+                            <span class="checkbox-icon" id="tnc-checkbox"></span>
                             J'ai lu et accepté les conditions d'utilisation.
                         </label>
 
@@ -257,10 +257,10 @@
                             Je Je souhaite être prévenu des prochains évènements.
                         </label>
                         <br>
-                        <br>
                     </div>
 
                     <!-- Submit button -->
+                    <br>
                     <input
                             class="button btn-submit"
                             type="submit"

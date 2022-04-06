@@ -44,8 +44,10 @@ function closeModal() {
         elements[i].classList.remove('border-valid', 'border-error');
         elements[i].parentElement.setAttribute('data-error-visible', 'false');
     }
-    //Reset error message on radio buttons
+    //Reset error message on radio buttons and T&C checkbox
     document.getElementById('form-locations').setAttribute('data-error-visible', 'false');
+    document.getElementById('checkbox1').parentElement.setAttribute('data-error-visible', 'false');
+    document.getElementById('tnc-checkbox').classList.remove('outline-error');
     //Hide the modal
     modalBackground.style.display = "none";
 }

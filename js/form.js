@@ -8,6 +8,7 @@ const bDay = document.getElementById('birthdate');
 const qty = document.getElementById('quantity');
 const formLocations = document.getElementById('form-locations');
 const individualLocations = document.querySelectorAll('#form-locations .checkbox-input');
+const tnc = document.getElementById('checkbox1');
 
 /**
  * Variables
@@ -17,11 +18,11 @@ const regexEmail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 const minimumAge = 16;
 
 /**
- * Check if the first name is kosher
+ * Check if the first name is valid
  * @returns {boolean}
  */
 function validateFirstName() {
-    if ((firstName.value).length < firstName.minLength || !firstName.value.match(regexName)) {
+    if (theNameIsValid(firstName)) {
         setDataErrorVisible(firstName);
         setBorderToError(firstName);
         return false;
@@ -31,11 +32,11 @@ function validateFirstName() {
 }
 
 /**
- * Check if the last name is kosher
+ * Check if the last name is valid
  * @returns {boolean}
  */
 function validateLastName() {
-    if ((lastName.value).length < lastName.minLength || !lastName.value.match(regexName)) {
+    if (theNameIsValid(lastName)) {
         setDataErrorVisible(lastName);
         setBorderToError(lastName);
         return false;
@@ -45,7 +46,7 @@ function validateLastName() {
 }
 
 /**
- * Check if the email is kosher
+ * Check if the email is valid
  * @returns {boolean}
  */
 function validateEmail() {
@@ -59,7 +60,7 @@ function validateEmail() {
 }
 
 /**
- * Check if the age is kosher
+ * Check if the age is valid
  * @returns {boolean}
  */
 function validateBirthdate() {
@@ -97,6 +98,20 @@ function validateLocation() {
         }
     }
     formLocations.setAttribute('data-error-visible', 'true');
+    return false;
+}
+
+/**
+ * Check if the T&C box is selected
+ * @returns {boolean}
+ */
+function validateTnc() {
+    if (tnc.checked) {
+        document.getElementById('tnc-checkbox').classList.remove('outline-error');
+        return true;
+    }
+    setDataErrorVisible(tnc);
+    document.getElementById('tnc-checkbox').classList.add('outline-error');
     return false;
 }
 
@@ -145,6 +160,13 @@ formLocations.addEventListener('change', () => {
     }
 });
 
+tnc.addEventListener('change', () => {
+    validateTnc();
+    if (validateTnc()) {
+        setDataErrorHidden(tnc);
+    }
+});
+
 /**
  * Helper functions to save typing
  * @param element
@@ -168,6 +190,15 @@ function setBorderToValid(element) {
 }
 
 /**
+ * Function to check both name fields for correctness
+ * @param name
+ * @returns {boolean}
+ */
+function theNameIsValid(name) {
+    return (name.value).length < name.minLength || !name.value.match(regexName);
+}
+
+/**
  * Function to calculate age.
  * Calculates a year of 365.25 days (0.25 because of leap years) in ms.
  * @returns {number}
@@ -183,19 +214,20 @@ function calculateAge() {
  * @returns {boolean}
  */
 function validate() {
-    validateFirstName();
-    validateLastName();
-    validateEmail();
-    validateBirthdate();
-    validateQuantity();
-    validateLocation();
-    if (validateFirstName() &&
-        validateLastName() &&
-        validateEmail() &&
-        validateBirthdate() &&
-        validateQuantity() &&
-        validateLocation()
-    ) {
+    let firstNameIsValid = validateFirstName();
+    let lastNameIsValid = validateLastName();
+    let emailIsValid = validateEmail();
+    let bDayIsValid = validateBirthdate();
+    let qtyIsValid = validateQuantity();
+    let locIsValid = validateLocation();
+    let tncIsValid = validateTnc();
+    if (firstNameIsValid &&
+        lastNameIsValid &&
+        emailIsValid &&
+        bDayIsValid &&
+        qtyIsValid &&
+        locIsValid &&
+        tncIsValid) {
         return true;
     }
     return false;
