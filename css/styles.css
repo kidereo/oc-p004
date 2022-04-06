@@ -201,7 +201,7 @@ footer { padding-left: 2vw; padding-right: 2vw; margin: 0 20px; }
 
 .modal-body { padding: 15px 8%; margin: 15px auto; }
 
-label { font-family: var(--font-default); font-size: 17px; font-weight: normal; display: inline-block; margin-bottom: 11px; }
+label { font-family: "DM Sans", Arial, Helvetica, sans-serif; font-size: 17px; font-weight: normal; display: inline-block; margin-bottom: 11px; }
 
 input { padding: 8px; border: 0.8px solid #ccc; outline: none; }
 
@@ -250,7 +250,7 @@ input { padding: 8px; border: 0.8px solid #ccc; outline: none; }
 .btn-submit { background: #fe142f; display: block; margin: 0 auto; border-radius: 10px; font-size: 1rem; padding: 12px 82px; color: #fff; cursor: pointer; border: 0; }
 
 /* custom select styles */
-.custom-select { position: relative; font-family: Arial; font-size: 1.1rem; font-weight: normal; }
+.custom-select { position: relative; font-family: "DM Sans", Arial, Helvetica, sans-serif; font-size: 1.1rem; font-weight: normal; }
 
 .custom-select select { display: none; }
 

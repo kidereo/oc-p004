@@ -119,50 +119,50 @@ function validateTnc() {
  * Validate fields on the focusout
  */
 firstName.addEventListener('focusout', () => {
-    validateFirstName();
-    if (validateFirstName()) {
+    let valid = validateFirstName();
+    if (valid) {
         setDataErrorHidden(firstName);
     }
 });
 
 lastName.addEventListener('focusout', () => {
-    validateLastName();
-    if (validateLastName()) {
+    let valid = validateLastName();
+    if (valid) {
         setDataErrorHidden(lastName);
     }
 });
 
 eMail.addEventListener('focusout', () => {
-    validateEmail();
-    if (validateEmail()) {
+    let valid = validateEmail();
+    if (valid) {
         setDataErrorHidden(eMail);
     }
 });
 
 bDay.addEventListener('focusout', () => {
-    validateBirthdate();
-    if (validateBirthdate()) {
+    let valid = validateBirthdate();
+    if (valid) {
         setDataErrorHidden(bDay);
     }
 });
 
 qty.addEventListener('focusout', () => {
-    validateQuantity();
-    if (validateQuantity()) {
+    let valid = validateQuantity();
+    if (valid) {
         setDataErrorHidden(qty);
     }
 });
 
 formLocations.addEventListener('change', () => {
-    validateLocation();
-    if (validateLocation()) {
+    let valid = validateLocation();
+    if (valid) {
         formLocations.setAttribute('data-error-visible', 'false');
     }
 });
 
 tnc.addEventListener('change', () => {
-    validateTnc();
-    if (validateTnc()) {
+    let valid = validateTnc();
+    if (valid) {
         setDataErrorHidden(tnc);
     }
 });
