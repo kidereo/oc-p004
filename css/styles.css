@@ -111,6 +111,10 @@ template { display: none; }
     transform: translateY(-150px); }
   to { opacity: 1; } }
 
+@keyframes confirmation-open { from { opacity: 0;
+    transform: translateY(-25px); }
+  to { opacity: 1; } }
+
 :root { --font-default: "DM Sans", Arial, Helvetica, sans-serif; --font-slab: var(--font-default); --modal-duration: 0.8s; }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -274,3 +278,7 @@ input { padding: 8px; border: 0.8px solid #ccc; outline: none; }
 
 /* custom select end */
 .text-label { font-weight: normal; font-size: 16px; }
+
+.confirmation { height: 800px; display: none; flex-direction: column; justify-content: space-between; animation-name: confirmation-open; animation-duration: 1s; }
+
+.confirmation p { text-align: center; font-size: xx-large; }

@@ -230,7 +230,10 @@ function validate() {
         qtyIsValid &&
         locIsValid &&
         tncIsValid) {
-        return true;
+        hideForm();
+        displayConfirmation();
+
+        //return true;
     }
     return false;
 }

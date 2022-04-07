@@ -6,6 +6,9 @@ const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
 const modalCloseX = document.getElementById("modal-close-x");
 const modalContent = document.getElementById("modal-content");
+const form = document.getElementById("form");
+const confirmation = document.getElementById("confirmation");
+const modalCloseBtn = document.getElementById("modal-close-btn");
 
 /**
  * Modal events: Launch modal
@@ -20,10 +23,13 @@ modalBtn.forEach((btn) => btn.addEventListener("click", () => {
  * Modal events: Close modal
  * a. By clicking on the top-right X
  * b. By clicking outside of the modal form
+ * c. By clicking the confirmation close button
  */
 modalCloseX.onclick = closeModal;
 
 modalBackground.onclick = closeModal;
+
+modalCloseBtn.onclick = closeModal;
 
 /**
  * Modal functions
@@ -48,9 +54,33 @@ function closeModal() {
     document.getElementById('form-locations').setAttribute('data-error-visible', 'false');
     document.getElementById('checkbox1').parentElement.setAttribute('data-error-visible', 'false');
     document.getElementById('tnc-checkbox').classList.remove('outline-error');
+    //Make sure the form is shown again if closed
+    displayForm();
+    //Clear confirmation
+    hideConfirmation();
     //Hide the modal
     modalBackground.style.display = "none";
 }
 
 modalContent.onclick = (event) => event.stopPropagation();
+
+/**
+ * Modal confirmation functions
+ */
+function hideForm() {
+    form.style.display = 'none';
+}
+
+function displayForm() {
+    form.style.display = 'block';
+}
+
+function displayConfirmation() {
+    confirmation.style.display = 'flex';
+}
+
+function hideConfirmation() {
+    confirmation.style.display = 'none';
+}
+
 

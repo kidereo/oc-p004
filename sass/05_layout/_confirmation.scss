@@ -1,0 +1,13 @@
+.confirmation {
+  height: 800px;
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  animation-name: confirmation-open;
+  animation-duration: $modal-duration;
+
+  & p {
+    text-align: center;
+    font-size: xx-large;
+  }
+}
