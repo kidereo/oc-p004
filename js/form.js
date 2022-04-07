@@ -10,11 +10,13 @@ const formLocations = document.getElementById('form-locations');
 const individualLocations = document.querySelectorAll('#form-locations .checkbox-input');
 const tnc = document.getElementById('checkbox1');
 
+
 /**
  * Variables
  */
 const regexName = /^[a-z ,.'-]+$/i;
 const regexEmail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+const minimumNameLength = 2;
 const minimumAge = 16;
 
 /**
@@ -195,7 +197,7 @@ function setBorderToValid(element) {
  * @returns {boolean}
  */
 function theNameIsValid(name) {
-    return (name.value).length < name.minLength || !name.value.match(regexName);
+    return name.value.length < minimumNameLength || !name.value.match(regexName);
 }
 
 /**
