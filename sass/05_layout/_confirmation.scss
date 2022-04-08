@@ -11,3 +11,9 @@
     font-size: xx-large;
   }
 }
+
+@media only screen and (max-width: $breakpoint-mobile) {
+  .confirmation {
+    height: 500px;
+  }
+}
