@@ -145,14 +145,15 @@ main { font-size: 130%; font-weight: bolder; color: black; padding-top: 0.5vw; p
 
 @media only screen and (max-width: 1299px) and (min-width: 820px) { .topnav { flex-flow: column; } }
 
-@media only screen and (max-width: 819px) { .topnav { align-items: flex-start; }
+@media only screen and (max-width: 819px) { .topnav { align-items: flex-start; overflow: visible; }
   .topnav a { display: none; }
   .topnav a.icon { float: right; display: block; }
-  .topnav.responsive { position: relative; }
+  .topnav .responsive { position: relative; }
   .topnav.responsive .icon { position: absolute; right: 0; top: 0; }
   .topnav.responsive a { float: none; display: block; text-align: left; }
   .header-logo img { width: 150px; margin-top: 10px; margin-right: 24px; }
-  .main-navbar { border: black 1px solid; border-radius: 10px; } }
+  .main-navbar { background-color: white; position: absolute; right: 30px; top: 20px; z-index: 10; }
+  .main-navbar:hover { border: black 0.5px solid; border-radius: 10px; } }
 
 .hero-section { border-radius: 10px; display: grid; grid-template-columns: repeat(12, 1fr); overflow: hidden; box-shadow: 0 2px 7px 2px rgba(0, 0, 0, 0.2); margin-bottom: 10px; }
 
