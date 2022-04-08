@@ -99,11 +99,8 @@
     right: 30px;
     top: 20px;
     z-index: 10;
-
-    &:hover {
-      border: black 0.5px solid;
-      border-radius: 10px;
-    }
+    border: black 0.5px solid;
+    border-radius: 10px;
   }
 }
 
